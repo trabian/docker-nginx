@@ -5,7 +5,7 @@ A high-performance Nginx base image for Docker to serve static websites. It will
 
 To build a Docker image for your site, you'll need to create a `Dockerfile`. For example, if your site is in a directory called `src/`, you could create this `Dockerfile`:
 
-    FROM kyma/docker-nginx
+    FROM trabian/docker-nginx
     COPY src/ /var/www
     CMD 'nginx'
 
@@ -21,7 +21,7 @@ Then build and run it:
 
 Docker Hub
 ----------
-The trusted build information can be found on the Docker Hub at https://registry.hub.docker.com/u/kyma/docker-nginx/.
+The trusted build information can be found on the Docker Hub at https://registry.hub.docker.com/u/trabian/docker-nginx/.
 
 SSL
 ---
@@ -52,13 +52,13 @@ where you copy in your modified config files.
 
 ```dockerfile
 # Guide here:
-# https://github.com/KyleAMathews/docker-nginx
+# https://github.com/trabian/docker-nginx
 
 # Build docker file
 # docker build -t CONTAINERNAME .
 
 # Build from this repo's image
-FROM kyma/docker-nginx
+FROM trabian/docker-nginx
 
 # Example if you wanna swap the default server file.
 COPY path/to/your/default /etc/nginx/sites-enabled/default
