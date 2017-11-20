@@ -16,5 +16,5 @@ ENV PORT=8080
 # expose both the HTTP (80) and HTTPS (443) ports
 EXPOSE 8080 443
 
-CMD /bin/bash -c "envsubst < /tmp/default > /etc/nginx/sites-enabled/default && nginx"
+CMD /bin/bash -c "envsubst '\$PORT' < /tmp/default > /etc/nginx/sites-enabled/default && nginx"
 
