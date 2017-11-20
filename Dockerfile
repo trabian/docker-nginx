@@ -5,7 +5,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY basic.conf /etc/nginx/basic.conf
 COPY mime.types /etc/nginx/mime.types
 RUN mkdir /etc/nginx/ssl
-COPY default /etc/nginx/sites-enabled/default
+COPY default /etc/nginx/sites-enabled/default.template
 COPY default-ssl /etc/nginx/sites-available/default-ssl
 COPY directive-only /etc/nginx/directive-only
 COPY location /etc/nginx/location
@@ -13,5 +13,5 @@ COPY location /etc/nginx/location
 # expose both the HTTP (80) and HTTPS (443) ports
 EXPOSE 80 443
 
-CMD ["nginx"]
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/sites-enabled/default.template > /etc/nginx/sites-enabled/default && nginx -g 'daemon off;'"
 
